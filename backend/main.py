@@ -275,3 +275,16 @@ async def ask_assistant(req: AssistantRequest):
         )
         
     return AssistantResponse(response=response, timestamp=timestamp)
+
+# Serve compiled Vite frontend static files if present (Must be mounted at the end to not override /api routes)
+import os
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+
+frontend_dist = os.path.abspath(os.path.join(os.path.dirname(__file__), "../frontend/dist"))
+if os.path.exists(frontend_dist):
+    app.mount("/", StaticFiles(directory=frontend_dist, html=True), name="static")
+
+    @app.get("/{catchall:path}")
+    async def catch_all_index(catchall: str):
+        return FileResponse(os.path.join(frontend_dist, "index.html"))
