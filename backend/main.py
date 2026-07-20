@@ -1,3 +1,8 @@
+import sys
+import os
+# Add backend folder to python path to resolve local imports automatically
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 import asyncio
 import random
 from datetime import datetime
