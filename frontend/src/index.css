@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-brand-dark: #070913;
+  --color-brand-card: rgba(13, 18, 36, 0.6);
+  --color-brand-purple: #d946ef;
+  --color-brand-cyan: #06b6d4;
+  --color-brand-green: #10b981;
+  --color-brand-orange: #f97316;
+  --color-brand-red: #f43f5e;
+  --color-brand-blue: #3b82f6;
+  
+  --font-space: "Space Grotesk", sans-serif;
+  --font-sans: "Inter", sans-serif;
+
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-scan: scan 6s linear infinite;
+  --animate-glow: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px rgba(6, 182, 212, 0.2), 0 0 20px rgba(6, 182, 212, 0.1);
+  }
+  to {
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.4), 0 0 30px rgba(6, 182, 212, 0.2);
+  }
+}
+
+/* Premium Custom Styles */
+body {
+  background-color: #05070f;
+  color: #f3f4f6;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, .font-space {
+  font-family: var(--font-space);
+}
+
+/* Scrollbar customizations */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(7, 9, 19, 0.8);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(168, 85, 247, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(168, 85, 247, 0.6);
+}
+
+/* Glassmorphism utility classes */
+.glass-panel {
+  background: rgba(11, 15, 33, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-panel-glow-purple {
+  background: rgba(11, 15, 33, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(217, 70, 239, 0.15);
+  box-shadow: 0 0 25px rgba(217, 70, 239, 0.05), inset 0 0 12px rgba(217, 70, 239, 0.02);
+}
+
+.glass-panel-glow-cyan {
+  background: rgba(11, 15, 33, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(6, 182, 212, 0.15);
+  box-shadow: 0 0 25px rgba(6, 182, 212, 0.05), inset 0 0 12px rgba(6, 182, 212, 0.02);
+}
+
+.glass-panel-glow-green {
+  background: rgba(11, 15, 33, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(16, 185, 129, 0.15);
+  box-shadow: 0 0 25px rgba(16, 185, 129, 0.05), inset 0 0 12px rgba(16, 185, 129, 0.02);
+}
+
+/* Text glow utilities */
+.glow-text-cyan {
+  text-shadow: 0 0 8px rgba(6, 182, 212, 0.6);
+}
+
+.glow-text-purple {
+  text-shadow: 0 0 8px rgba(217, 70, 239, 0.6);
+}
+
+.glow-text-green {
+  text-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+}
+
+.glow-text-orange {
+  text-shadow: 0 0 8px rgba(249, 115, 22, 0.6);
+}
+
+/* Scanner effect for futuristic vibe */
+.scanner-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.scanner-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: linear-gradient(180deg, transparent, rgba(6, 182, 212, 0.12), transparent);
+  animation: scan 4s linear infinite;
+  pointer-events: none;
+}
