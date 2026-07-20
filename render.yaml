@@ -1,0 +1,25 @@
+services:
+  # 1. Backend Web Service (FastAPI)
+  - type: web
+    name: fifawebai-backend
+    env: python
+    buildCommand: "pip install -r backend/requirements.txt"
+    startCommand: "python -m uvicorn backend.main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+
+  # 2. Frontend Static Site (Vite React)
+  - type: web
+    name: fifawebai
+    env: static
+    buildCommand: "cd frontend && npm install && npm run build"
+    publishPath: "frontend/dist"
+    # Rewrite API routes to the backend web service
+    routes:
+      - type: rewrite
+        source: /api/*
+        destination: https://fifawebai-backend.onrender.com/api/*
+      - type: rewrite
+        source: /*
+        destination: /index.html
